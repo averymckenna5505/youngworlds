@@ -4,7 +4,7 @@ import astropy.units as u
 import pandas as pd
 import time
 
-stars = pd.read_csv("combined_highmetal8_28.csv")  
+stars = pd.read_csv("catalog_and_100psc_high.csv")  
 coords = SkyCoord(ra=stars["ra"].values*u.deg, dec=stars["dec"].values*u.deg)
 
 tic_catalog = "IV/38/tic82"
@@ -46,4 +46,4 @@ twomass_df = query_batch(twomass_catalog, coords, search_radius, prefix="2MASS")
 stars = pd.concat([stars, twomass_df], axis=1)
 
 #stars.to_pickle("crossmatch_results3.pkl") 
-stars.to_csv("crossmatch_summaryhigh.csv", index=False) 
+stars.to_csv("2massresults_high_bprpfiltered.csv", index=False) 
